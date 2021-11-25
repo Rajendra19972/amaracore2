@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Difference and Countup</title>
+    <!-- Moment Javascript Library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js"></script>
+
+</head>
+<body bgcolor="cyan">
+    <center>
+    <div class="container" style="margin: 50px auto; width: 80%;">
+    <h1>Calculating Time Difference Between Two Dates</h1>
+    <h2>Date 1: 22 Oct 2020</h2>
+    <h2>Date 2: Now</h2>
+    <table border="2">
+        <tr>
+            <td>Starting Date : </td>
+            <td><input type="date" id="dateone"></td>
+        </tr>
+        <tr>
+            <td>Ending Date : </td>
+            <td><input type="date" id="datetwo"></td>
+        </tr>
+        
+    </table>
+    <input type="button" id="but" value="click">
+    <!-- Output time difference -->
+    <h2 id="output" style="color: blueviolet;"></h2>
+    </div>
+
+    <script>
+        // Step 1: Create a function to calculate time difference
+        function diff(){
+            var a = moment('2020-10-22 13:31:12'); // past time
+            var b = moment(); // current time
+            diff = moment.preciseDiff(a, b, true); // objects with years, months, days, hours, minutes, seconds
+
+            diff_years= diff['years'];
+            diff_months= diff['months'];
+            diff_days= diff['days'];
+            diff_hours= diff['hours'];
+            diff_minutes= diff['minutes'];
+            diff_seconds= diff['seconds'];
+
+            document.getElementById("output").innerHTML = diff_years + " years " + diff_months + " months " 
+            + diff_days + " days " + diff_hours + " hours " + diff_minutes + " minutes " + diff_seconds + " seconds ";
+        }
+        // Step 2: Set interval
+        setInterval(diff, 1000);
+
+        // Trial
+        //var a = moment('2021-08-22 13:31:12'); // past time
+        //var b = moment(); // current time
+        //diff = moment.preciseDiff(a, b, true);
+
+        //document.getElementById("output").innerHTML = JSON.stringify(diff);
+    </script>
+    </center>
+</body>
+</html>
